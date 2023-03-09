@@ -8,25 +8,25 @@ interface CommentProps {
     OnDeleteComment: (comment: string) => void;
 }
 
-export function Comment({ content, OnDeleteComment }:CommentProps) {
+export function Comment({ content, OnDeleteComment }: CommentProps) {
 
     const [likeCount, setLikeCount] = useState(0);
 
-     function handleDeleteComment() {
+    function handleDeleteComment() {
         OnDeleteComment(content)
-     }
+    }
 
-     function handleLikeComment() {
+    function handleLikeComment() {
         setLikeCount((state) => {
             return state + 1
         });
-     }
+    }
 
     return (
         <>
             <div className={styles.comment}>
                 <Avatar hasBorder={false} src="https://avatars.githubusercontent.com/u/85197166?v=4"
-                        alt="" />
+                    alt="" />
 
                 <div className={styles.commentBox}>
                     <div className={styles.commentContent}>
@@ -39,14 +39,14 @@ export function Comment({ content, OnDeleteComment }:CommentProps) {
                                 </time>
                             </div>
                             <button onClick={handleDeleteComment} title='Deletar comentario'>
-                                <Trash size={24}/>
+                                <Trash size={24} />
                             </button>
                         </header>
                         <p>{content}</p>
                     </div>
                     <footer>
                         <button onClick={handleLikeComment}>
-                            <ThumbsUp/>
+                            <ThumbsUp />
                             Aplaudir <span>{likeCount}</span>
                         </button>
                     </footer>

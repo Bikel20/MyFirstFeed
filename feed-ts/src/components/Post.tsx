@@ -30,8 +30,8 @@ interface PostProps {
 
 export function Post({ post }: PostProps) {
 
-    const [comments, setComments] = useState ([
-       'Lorem ipsum dolor, sit amet consectetur adipisicing elit!'
+    const [comments, setComments] = useState([
+        'Lorem ipsum dolor, sit amet consectetur adipisicing elit!'
     ])
 
     const [newCommentText, setNewCommentText] = useState('')
@@ -40,41 +40,41 @@ export function Post({ post }: PostProps) {
         locale: ptBr,
     })
 
-    const dateRelativeToNow = formatDistanceToNow(post.publishedAt,{
+    const dateRelativeToNow = formatDistanceToNow(post.publishedAt, {
         locale: ptBr,
-        addSuffix: true, 
+        addSuffix: true,
     })
 
-    function handleCreateNewComment (event: FormEvent) {
+    function handleCreateNewComment(event: FormEvent) {
         event.preventDefault()
 
         setComments([...comments, newCommentText]);
         setNewCommentText('')
 
-           
+
     }
 
 
-    function handleNewCommentChange (event: ChangeEvent <HTMLTextAreaElement> ){
+    function handleNewCommentChange(event: ChangeEvent<HTMLTextAreaElement>) {
         event.target.setCustomValidity('')
         setNewCommentText(event.target.value);
     }
 
-    function deleteComment (commentToDelete: string) {
+    function deleteComment(commentToDelete: string) {
 
-       const commentsWithoutDeletedOne = comments.filter (comment => {
-        return comment !== commentToDelete;
-       })
+        const commentsWithoutDeletedOne = comments.filter(comment => {
+            return comment !== commentToDelete;
+        })
 
         setComments(commentsWithoutDeletedOne);
     }
 
-    function handleNewCommentInvalid(event:InvalidEvent <HTMLTextAreaElement>){
+    function handleNewCommentInvalid(event: InvalidEvent<HTMLTextAreaElement>) {
         event.target.setCustomValidity('Esse campo é obrigatorio')
     }
 
     const isNewCommentEmpty = newCommentText.length === 0
-   
+
     return (
         <>
             <article className={styles.post}>
@@ -89,55 +89,55 @@ export function Post({ post }: PostProps) {
                             <span>{post.author.role}</span>
                         </div>
                     </div>
-                    
+
                     {/* intl date format ou date-fns */}
                     <time title={publishedDateFormatted}
                         dateTime={post.publishedAt.toISOString()}>
-                            {dateRelativeToNow}
-                        
+                        {dateRelativeToNow}
+
                     </time>
 
                 </header>
                 <div className={styles.content}>
-                    {post.content.map(line =>{
+                    {post.content.map(line => {
                         if (line.type === 'paragraph') {
                             return <p key={line.content}> {line.content} </p>
                         } else if (line.type === 'link') {
                             return <p key={line.content}> <a href="#"> {line.content} </a> </p>
                         }
                     })}
-                 
 
-                    
+
+
                 </div>
 
                 <form onSubmit={handleCreateNewComment} className={styles.commentForm}>
                     <strong>Deixe seu feedback</strong>
-                    
-                    <textarea
-                     name="comment"
-                     value={newCommentText}
-                     placeholder='Deixe seu comentario'
-                     onChange={handleNewCommentChange}
-                     onInvalid={handleNewCommentInvalid}
-                     required
-                     />
 
-                   <footer>
-                   <button type='submit' 
-                           disabled={isNewCommentEmpty}>
-                    comentar
-                    </button>
-                   </footer>
+                    <textarea
+                        name="comment"
+                        value={newCommentText}
+                        placeholder='Deixe seu comentario'
+                        onChange={handleNewCommentChange}
+                        onInvalid={handleNewCommentInvalid}
+                        required
+                    />
+
+                    <footer>
+                        <button type='submit'
+                            disabled={isNewCommentEmpty}>
+                            comentar
+                        </button>
+                    </footer>
                 </form>
                 <div className={styles.commentList}>
-                {comments.map(comment => {
-                    return <Comment 
-                            key={comment} 
+                    {comments.map(comment => {
+                        return <Comment
+                            key={comment}
                             content={comment}
                             OnDeleteComment={deleteComment}
-                            />
-                })}
+                        />
+                    })}
                 </div>
             </article>
         </>
