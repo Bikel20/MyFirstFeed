@@ -18,8 +18,8 @@ const posts: PostType[] = [
       role: 'Cto'
     },
     content: [
-     { type: 'paragraph', content: 'Fala galeraa 👋' },
-     { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+     { type: 'paragraph', content: 'Olá Rede ! 👋' },
+     { type: 'paragraph', content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem optio, aliquam suscipit impedit qui facilis eius! Possimus nemo sint delectus.' },
      { type: 'link', content: 'jane.design/doctorcare' },
     ],
     publishedAt: new Date('2023-02-28 14:55:00'),
@@ -28,13 +28,13 @@ const posts: PostType[] = [
   {
     id: 2,
     author: {
-      avatarUrl:'https://github.com/diego3g.png',
+      avatarUrl:'https://images.unsplash.com/photo-1600697394936-59934aa5951f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGRlc2lnbmVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=40',
       name: 'Douglas andrade gomes',
       role: 'Designer'
     },
     content: [
      { type: 'paragraph', content: 'Fala galeraa 👋' },
-     { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+     { type: 'paragraph', content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem optio, aliquam suscipit impedit qui facilis eius! Possimus nemo sint delectus doloribus harum eius ducimus natus, illum culpa quod perspiciatis aspernatur? 🚀' },
      { type: 'link', content: 'jane.design/doctorcare' },
     ],
     publishedAt: new Date('2023-02-28 14:55:00'),
